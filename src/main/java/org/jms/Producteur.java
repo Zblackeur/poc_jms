@@ -26,8 +26,13 @@ public class Producteur {
 			connection.start();
 			//4-Créer une session
 			Session session =connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+			
 			//5-Créer une destination (file d'attente : queue)
-			Destination destination = session.createQueue("poc_queue"); 
+			//Destination destination = session.createQueue("poc_queue"); 
+			
+			//5-Créer une destination (Topic)
+			Destination destination = session.createTopic("poc_topic");
+			
 			//6-Créer un producteur pour la destination créée
 			MessageProducer producer = session.createProducer(destination);
 			//7- Spécifier le mode non persistant

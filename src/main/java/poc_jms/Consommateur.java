@@ -25,8 +25,13 @@ public class Consommateur {
 			connection.start();
 			//4-Créer une session
 			Session session =connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+			
 			//5-Créer une destination (file d'attente : queue)
-			Destination destination = session.createQueue("poc_queue"); 
+			//Destination destination = session.createQueue("poc_queue"); 
+			
+			//5-Créer une destination (Topic)
+			Destination destination = session.createTopic("poc_topic");
+		
 			//6-Créer un Consommateur pour la destination créée
 			MessageConsumer consumer = session.createConsumer(destination);
 			//7-Ajouter un listener pour attendre les messages
